@@ -1,0 +1,45 @@
+.button {
+  background-color: #purple;
+  color: white;
+  padding: 20px;
+  margin: 100px;
+}
+
+#outerbox {
+    position: absolute;
+    left: 30%;
+    top: 20%;
+    width: 500px;
+    height: 500px;
+    border: 2px solid blue;
+}
+#startTimer {
+    background-color: blue;
+    margin-left: 35%;
+    padding: 15px 25px;
+    font-size: 20px;
+    color: white;
+    border-radius: 12px;
+    font-family: cursive;
+}
+#questionsDiv {
+    margin: 20px;
+    font-family: cursive;
+}
+
+.time {
+    float: right;
+    font-family: cursive;
+}
+
+
+
+h1 {
+    text-align: center;
+    font-family: cursive;
+}
+
+p {
+    text-align: center;
+    font-family: cursive;
+}
