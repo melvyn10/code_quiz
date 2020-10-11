@@ -5,21 +5,21 @@ var answerEl = document.querySelector("#answer");
 var timeEl = document.querySelector(".time");
 
 var questionList = [ 
-    {question: "Q1",
-    choices: ["A1", "A2", "A3", "A4"],
-    answer: "A1"},
-    {question: "Q2",
-    choices: ["A1", "A2", "A3", "A4"],
-    answer: "A2"},
-    {question: "Q3",
-    choices: ["A1", "A2", "A3", "A4"],
-    answer: "A1"},
-    {question: "Q4",
-    choices: ["A1", "A2", "A3", "A4"],
-    answer: "A2"},
-    {question: "Q5",
-    choices: ["A1", "A2", "A3", "A4"],
-    answer: "A2"}
+    {question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    choices: ["Javascript", "terminal / bash", "for loops", "console log"],
+    answer: "console log"},
+    {question: "Commonly used data types DO NOT include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    answer: "alerts"},
+    {question: "String values must be enclosed within ____ when being assigned to variables.",
+    choices: ["commas", "curly brackets", "quotes", "parenthesis"],
+    answer: "quotes"},
+    {question: "Arrays in Javascript can be used to store ____.",
+    choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+    answer: "all of the above"},
+    {question: "The condition in an if / else statement is enclosed within ____.",
+    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+    answer: "parentheses"}
 ];
 
 var currentQuestion = 0;
@@ -55,6 +55,8 @@ async function checkAnswer(event) {
     answerEl.innerHTML="";
     var element = event.target;
     var tag = document.createElement("div");
+    tag.style.fontFamily = "cursive";
+
     if (questionList[currentQuestion].answer == element.textContent ) {
         tag.textContent = "you are correct, the answer is " + questionList[currentQuestion].answer;
     } 
@@ -75,7 +77,7 @@ async function checkAnswer(event) {
 
 function gameOver () {
     clearInterval(timerInterval);
-
+    if (parseFloat(currentScore) < 0) currentScore = 0;
     questionEl.innerHTML="";
     var tag = document.createElement("h1");
     tag.textContent="All done!";
@@ -119,49 +121,11 @@ function setTime() {
   }, 1000);
 }
 
-function displayHighScore() {
-    questionEl.innerHTML="";
-    answerEl.innerHTML="";
-    var tag = document.createElement("h1");
-    tag.textContent="Highscores";
-    questionEl.appendChild(tag);
-
-    var storedScores = JSON.parse(localStorage.getItem("highScores"));
-    if (storedScores != null) {
-        var li;
-
-        for (i=0; i<storedScores.length; i++) {
-            li = document.createElement("li");
-            li.textContent = storedScores[i].name + ": " + storedScores[i].score;
-            questionEl.appendChild(li);
-        }
-    }
-    var backBtn = document.createElement("button");
-    backBtn.setAttribute("type", "button");
-    backBtn.setAttribute("id","button");
-    backBtn.textContent = "Go Back";
-    questionEl.appendChild(backBtn);
-    backBtn.addEventListener("click", function(){
-        window.location.replace("./index.html");
-    });
-
-    var clearBtn = document.createElement("button");
-    clearBtn.setAttribute("type", "button");
-    clearBtn.setAttribute("id","button");
-    clearBtn.textContent = "Clear Highscroes";
-    questionEl.appendChild(clearBtn);
-    clearBtn.addEventListener("click", function(){
-        localStorage.clear();
-        displayHighScore();
-    });
-}
-
 function updateHighScore() {
     var newScore = {
         score: currentScore,
         name: currentName
     };
-
     var storedScores = JSON.parse(localStorage.getItem("highScores"));
     if (storedScores != null) {
         highScores = storedScores;
@@ -169,7 +133,6 @@ function updateHighScore() {
             /* 
             ** lower than existing stored scores
             */
-            if (parseFloat(currentScore) < 0) currentScore = 0;
             highScores.push(newScore);
             }
         else {
@@ -189,7 +152,7 @@ function updateHighScore() {
         highScores[0] = newScore;
         localStorage.setItem("highScores", JSON.stringify(highScores));
     }
-    displayHighScore();
+    window.location.replace("./highScore.html");
 }
 
 startGame();

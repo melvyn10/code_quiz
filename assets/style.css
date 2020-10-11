@@ -1,18 +1,10 @@
-.button {
-  background-color: blue;
-  color: white;
-  padding: 20px;
-  margin: 100px;
-}
-
 #outerbox {
     position: absolute;
-    left: 30%;
-    top: 20%;
     width: 500px;
     height: 500px;
-    border: 2px solid blue;
+    margin: 8% 5% 8% 5%;
 }
+
 #startTimer {
     background-color: purple;
     margin-left: 35%;
@@ -22,6 +14,7 @@
     border-radius: 12px;
     font-family: cursive;
 }
+
 #question-body {
     margin: 20px;
     font-family: cursive;
@@ -32,13 +25,23 @@
     font-family: cursive;
 }
 
-.high-score {
+#highScoreList {
     float: left;
     font-family: cursive;
 }
 
 h1 {
     text-align: center;
+    font-family: cursive;
+}
+
+h2 {
+    text-align: left;
+    font-size: 20px;
+    font-family: cursive;  
+}
+
+a {
     font-family: cursive;
 }
 
@@ -49,11 +52,9 @@ p {
 
 .container {
     position: absolute;
-    left: 30%;
-    top: 20%;
     width: 500px;
     height: 500px;
-    border: 2px solid blue;
+    margin: 8% 5% 8% 5%;
 }
 
 li {
