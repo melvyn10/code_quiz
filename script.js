@@ -1,8 +1,8 @@
 var containerEl = document.querySelector(".container");
 var listEl = document.querySelector("#answer-list");
 var questionEl = document.querySelector("#question-body");
+var answerEl = document.querySelector("#answer");
 var timeEl = document.querySelector(".time");
-var mainEl = document.getElementById("main");
 
 var questionList = [ 
     {question: "Q1",
@@ -24,7 +24,8 @@ var questionList = [
 
 var currentQuestion = 0;
 var currentScore = 75;
-var penalty = 10;
+var currentName = "";
+var penalty = 15;
 var timerInterval = 0;
 
 var maxScores=100;
@@ -37,7 +38,7 @@ function startGame() {
 }
 
 function displayQuestion() {
-    questionEl.innerHTML="";
+    questionEl.innerHTML = "";
     var tag = document.createElement("h1");
     tag.textContent=questionList[currentQuestion].question;
     questionEl.appendChild(tag);
@@ -46,12 +47,12 @@ function displayQuestion() {
         tag = document.createElement("li");
         tag.textContent = questionList[currentQuestion].choices[i];
         tag.addEventListener("click", (checkAnswer));
-        //tag.setAttribute
         questionEl.appendChild(tag);
     }
 }
 
-function checkAnswer(event) {
+async function checkAnswer(event) {
+    answerEl.innerHTML="";
     var element = event.target;
     var tag = document.createElement("div");
     if (questionList[currentQuestion].answer == element.textContent ) {
@@ -61,11 +62,7 @@ function checkAnswer(event) {
         tag.textContent = "WRONG!, the answer is " + questionList[currentQuestion].answer;
         currentScore = currentScore - penalty;
     }
-    questionEl.appendChild(tag);
-    setTimeout(function(){
-        /* wait a second */
-        alert("wait");
-    },2000);
+    answerEl.appendChild(tag);
     currentQuestion++;
     if (currentScore > 0 && currentQuestion < questionList.length) {
         displayQuestion();
@@ -77,12 +74,37 @@ function checkAnswer(event) {
 }
 
 function gameOver () {
-    alert ('Game Over!');
     clearInterval(timerInterval);
+
     questionEl.innerHTML="";
     var tag = document.createElement("h1");
     tag.textContent="All done!";
     questionEl.appendChild(tag);
+    tag = document.createElement("h2");
+    tag.textContent=("Your final score is " + currentScore);
+    questionEl.appendChild(tag);
+    
+    var label = document.createElement("label");
+    label.setAttribute ("id","nameLabel");
+    label.textContent = "Enter initials: ";
+    questionEl.appendChild(label);
+    var input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("id", "name");
+    input.textContent = "";
+    questionEl.appendChild(input);
+
+    var submitBtn = document.createElement("button");
+    submitBtn.setAttribute("type", "Submit");
+    submitBtn.setAttribute("id","Submit");
+    submitBtn.textContent = "Submit";
+    questionEl.appendChild(submitBtn);
+
+    submitBtn.addEventListener("click", function(){
+        currentName = input.value;
+        
+        updateHighScore();
+    });
 }
 
 function setTime() {
@@ -98,16 +120,40 @@ function setTime() {
 }
 
 function displayHighScore() {
+    questionEl.innerHTML="";
+    answerEl.innerHTML="";
     var tag = document.createElement("h1");
     tag.textContent="Highscores";
     questionEl.appendChild(tag);
 
     var storedScores = JSON.parse(localStorage.getItem("highScores"));
-    if (highScores != null) {
-        var li = document.createElement("li");
-        li.textContent = highScores;
-        questionEl.appendChild(li);
+    if (storedScores != null) {
+        var li;
+
+        for (i=0; i<storedScores.length; i++) {
+            li = document.createElement("li");
+            li.textContent = storedScores[i].name + ": " + storedScores[i].score;
+            questionEl.appendChild(li);
+        }
     }
+    var backBtn = document.createElement("button");
+    backBtn.setAttribute("type", "button");
+    backBtn.setAttribute("id","button");
+    backBtn.textContent = "Go Back";
+    questionEl.appendChild(backBtn);
+    backBtn.addEventListener("click", function(){
+        window.location.replace("./index.html");
+    });
+
+    var clearBtn = document.createElement("button");
+    clearBtn.setAttribute("type", "button");
+    clearBtn.setAttribute("id","button");
+    clearBtn.textContent = "Clear Highscroes";
+    questionEl.appendChild(clearBtn);
+    clearBtn.addEventListener("click", function(){
+        localStorage.clear();
+        displayHighScore();
+    });
 }
 
 function updateHighScore() {
@@ -115,32 +161,39 @@ function updateHighScore() {
         score: currentScore,
         name: currentName
     };
-    var pos = 0;
 
     var storedScores = JSON.parse(localStorage.getItem("highScores"));
     if (storedScores != null) {
         highScores = storedScores;
-
-        for (i=0; i< highScores.length; i++) {
-            if (parseFloat(currentScore) > parseFloat(highScores[i].score)) {
-                highScores.splice(i, 0, newScore);
-                break;
+        if (parseFloat(currentScore) <= parseFloat(highScores[highScores.length-1].score)) {
+            /* 
+            ** lower than existing stored scores
+            */
+            if (parseFloat(currentScore) < 0) currentScore = 0;
+            highScores.push(newScore);
+            }
+        else {
+            for (i=0; i< highScores.length; i++) {
+                if (parseFloat(currentScore) > parseFloat(highScores[i].score)) {
+                    highScores.splice(i, 0, newScore);
+                    break;
                 }
             }
-        localStorage.setItem("highScores", JSON.stringify(highScores));
         }
+        localStorage.setItem("highScores", JSON.stringify(highScores));
+    }
     else {
         /*
         ** first score
         */
         highScores[0] = newScore;
         localStorage.setItem("highScores", JSON.stringify(highScores));
-        }
+    }
+    displayHighScore();
 }
 
 startGame();
-//updateHighScore();
-//displayHighScore();
+
 
 
 
