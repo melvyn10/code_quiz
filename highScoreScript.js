@@ -1,6 +1,9 @@
 var containerEl = document.querySelector(".container");
 var highScoreListEl = document.querySelector("#highScoreList");
 
+/*
+** retrieve the highscores from the local storage
+*/
     var storedScores = JSON.parse(localStorage.getItem("highScores"));
     if (storedScores != null) {
         var li;
@@ -11,6 +14,10 @@ var highScoreListEl = document.querySelector("#highScoreList");
             highScoreListEl.appendChild(li);
         }
     }
+
+    /*
+    Build the "go Back" 
+    */
     var backBtn = document.createElement("button");
     backBtn.setAttribute("type", "button");
     backBtn.setAttribute("id","button");
@@ -20,10 +27,13 @@ var highScoreListEl = document.querySelector("#highScoreList");
         window.location.replace("./index.html");
     });
 
+        /*
+    Build the "Clear Highscores" buttons
+    */
     var clearBtn = document.createElement("button");
     clearBtn.setAttribute("type", "button");
     clearBtn.setAttribute("id","button");
-    clearBtn.textContent = "Clear Highscroes";
+    clearBtn.textContent = "Clear Highscores";
     highScoreListEl.appendChild(clearBtn);
     clearBtn.addEventListener("click", function(){
         localStorage.clear();

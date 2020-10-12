@@ -4,6 +4,9 @@ var questionEl = document.querySelector("#question-body");
 var answerEl = document.querySelector("#answer");
 var timeEl = document.querySelector(".time");
 
+/*
+** Array of objects to store question, answer selections, and answer
+*/
 var questionList = [ 
     {question: "A very useful tool used during development and debugging for printing content to the debugger is:",
     choices: ["Javascript", "terminal / bash", "for loops", "console log"],
@@ -22,6 +25,9 @@ var questionList = [
     answer: "parentheses"}
 ];
 
+/*
+** Initialize the variables
+*/
 var currentQuestion = 0;
 var currentScore = 75;
 var currentName = "";
@@ -32,11 +38,18 @@ var maxScores=100;
 var highScores = [];
 
 
+/*
+** Here where we start the counter and display the question
+*/
 function startGame() {
     setTime();
     if ( currentScore > 0 ) displayQuestion();
 }
 
+/*
+** Show the question and possible answers, we first clear the question block
+** also add a listener to see where the user is clicking
+*/
 function displayQuestion() {
     questionEl.innerHTML = "";
     var tag = document.createElement("h1");
@@ -51,6 +64,9 @@ function displayQuestion() {
     }
 }
 
+/*
+** CHeck to see if the user's selected answer is correct
+*/
 async function checkAnswer(event) {
     answerEl.innerHTML="";
     var element = event.target;
@@ -75,6 +91,10 @@ async function checkAnswer(event) {
 
 }
 
+/*
+** this is the game over function, it will show the user the final score
+** also ask the user to enter their initial and submit it
+*/
 function gameOver () {
     clearInterval(timerInterval);
     if (parseFloat(currentScore) < 0) currentScore = 0;
@@ -109,6 +129,9 @@ function gameOver () {
     });
 }
 
+/*
+** clock counter
+*/
 function setTime() {
     timerInterval = setInterval(function() {
     currentScore--;
@@ -121,6 +144,11 @@ function setTime() {
   }, 1000);
 }
 
+/*
+** here we store the socre
+** we also Sort the score by highest to lowest.
+** the code parses and if it finds a score lower, it will insert it in the object
+*/
 function updateHighScore() {
     var newScore = {
         score: currentScore,
