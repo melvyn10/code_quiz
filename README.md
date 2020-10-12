@@ -25,15 +25,17 @@ The mobile responsive webpage consists of the following:
 		
 		-One from the Bootstrap CDN, version 4.1.3
 		
-	-Three Java scripts
+	-Two Java scripts
 	
-		-script.js
+	-script.js
             This javascript contains the majority of the functions.
                 Functions to "read" the question, possible answers and check if answer is correct or not. 
                 Functions to check if the game is over by either checking the time or at the end of the total questions
-                Functions to  update the high score, this request the user to enter their initals and then updates the local storage. The function  "sorts" the scores by using "splice" to splice the array and insrt the score in the appropriate location
+                Functions to  update the high score, this request the user to enter their initals and then updates the local storage. 
+		The function  "sorts" the scores by using "splice" to splice the array and insrt the score in the appropriate location
         -highScoreScript.js
-            This javascript contains the function to read from the local storage and create a list on the highscore.html. It also creates two button, one to go back to the index page and one to clear the local storage
+            This javascript contains the function to read from the local storage and create a list on the highscore.html. 
+	    It also creates two button, one to go back to the index page and one to clear the local storage
 		
 		
 The following were implemented:
@@ -55,4 +57,6 @@ Installation instruction
 -Download the files
 -Publish the website in GitHub
 
-![image] (https://github.com/melvyn10/gt-homework3-2020-10-02/blob/main/assets/images/Password_image_2020-10-04.jpg)
+![image] (https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-mainPage.jpg)
+![image] (https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-questionPage.jpg)
+![image] (https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-highscorePage.jpg)
