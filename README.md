@@ -19,36 +19,36 @@ highScore.html
 
 The mobile responsive webpage consists of the following:
 
-	-One stylesheets (CSS)
+	One stylesheets (CSS)
 	
 		-One created specifically for the webpages
 		
 		-One from the Bootstrap CDN, version 4.1.3
 		
-	-Two Java scripts
+	Two Java scripts
 	
-	-script.js
-            This javascript contains the majority of the functions.
+		-script.js
+           	This javascript contains the majority of the functions.
                 Functions to "read" the question, possible answers and check if answer is correct or not. 
                 Functions to check if the game is over by either checking the time or at the end of the total questions
                 Functions to  update the high score, this request the user to enter their initals and then updates the local storage. 
 		The function  "sorts" the scores by using "splice" to splice the array and insrt the score in the appropriate location
-        -highScoreScript.js
-            This javascript contains the function to read from the local storage and create a list on the highscore.html. 
-	    It also creates two button, one to go back to the index page and one to clear the local storage
+       		
+		-highScoreScript.js
+            	This javascript contains the function to read from the local storage and create a list on the highscore.html. 
+	    	It also creates two button, one to go back to the index page and one to clear the local storage
 		
 		
 The following were implemented:
--the code to include semantic elements
+the code to include semantic elements
 
-	-Header
+	Header
+	Section
 	
-	-Section
 	
-	
--Added appropriate comments to the style file to ensure legibility
+Added appropriate comments to the style file to ensure legibility
 
--This code has been validated by W3C Markup Validation Service and error/warnings are corrected or understood.
+This code has been validated by W3C Markup Validation Service and error/warnings are corrected or understood.
 
 Installation instruction
 
@@ -58,5 +58,7 @@ Installation instruction
 -Publish the website in GitHub
 
 ![image] (https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-mainPage.jpg)
+
 ![image] (https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-questionPage.jpg)
+
 ![image] (https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-highscorePage.jpg)
