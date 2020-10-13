@@ -22,8 +22,7 @@ The mobile responsive webpage consists of the following:
 	One stylesheets (CSS)
 	
 		-One created specifically for the webpages
-		
-		-One from the Bootstrap CDN, version 4.1.3
+	
 		
 	Two Java scripts
 	
