@@ -1,4 +1,4 @@
-# code_quiz Homeork 4 10/12/2020
+# code_quiz Homework 4 10/12/2020
 
 Code quiz
 This application consists of 3 html pages, 2 javascript files, and a style css file.
