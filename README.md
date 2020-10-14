@@ -56,7 +56,7 @@ Installation instruction
 -Download the files
 -Publish the website in GitHub
 
-![image] (https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-mainPage.jpg)
+<img width="964" alt="mainPage" src="https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-mainPage.jpg">
 
 ![image] (https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-questionPage.jpg)
 
