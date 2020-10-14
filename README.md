@@ -58,6 +58,6 @@ Installation instruction
 
 <img width="964" alt="mainPage" src="https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-mainPage.jpg">
 
-![image] (https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-questionPage.jpg)
+<img width="964" alt="questionPage" src="https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-questionPage.jpg">
 
-![image] (https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-highscorePage.jpg)
+<img width="964" alt="highscorePage" src="https://github.com/melvyn10/code_quiz/blob/main/images/codeQuiz-highscorePage.jpg">
